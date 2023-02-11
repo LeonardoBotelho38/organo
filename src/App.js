@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Banner from './componentes/Banner';
 import Formulario from './componentes/Formulario';
-import Rodape from './componentes/Footer';
+import Footer from './componentes/Footer';
 import Time from './componentes/Time';
 
 
@@ -50,6 +50,10 @@ function App() {
 
   const [colaboradores, setColaboradores]= useState([])
 
+  function deletarColaborador(){
+    console.log('colaborador deletado!')
+  }
+
   const aoNovoColaboradorAdicionado = (colaborador) =>{
     setColaboradores([...colaboradores, colaborador])
   }
@@ -59,15 +63,16 @@ function App() {
       <Formulario times={times.map(time => time.nome)} aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)}/>
       
       {times.map(time => <Time 
-      key={time.nome} 
-      nome = {time.nome} 
-      corPrimaria={time.corPrimaria} 
-      corSecundaria={time.corSecundaria}
-      colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)} 
+        key={time.nome} 
+        nome = {time.nome} 
+        corPrimaria={time.corPrimaria} 
+        corSecundaria={time.corSecundaria}
+        colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)} 
+        aoDeletar={deletarColaborador}
       />)}
       
         
-        <Rodape/>
+        <Footer/>
     </div>
   );
 }
