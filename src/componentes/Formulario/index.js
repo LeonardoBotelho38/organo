@@ -1,4 +1,4 @@
-import CampoTexto from '../CampoTexto/';
+import Campo from '../Campo';
 import "./Formulario.css";
 import ListaSuspensa from '../ListaSuspensa';
 import Botao from '../Botao';
@@ -34,21 +34,21 @@ const Formulario = ({aoColaboradorCadastrado, times, cadastrarTime}) => {
     <section className='formulario'>
       <form onSubmit={aoSalval}>
         <h2>Preencha os dados para cadastro</h2>
-        <CampoTexto 
+        <Campo 
           obrigatorio={true} 
           label="Nome" 
           placeholder="digite seu nome" 
           value ={nome}
           aoAlterado = {valor => setNome(valor)}
         />
-        <CampoTexto 
+        <Campo 
           obrigatorio={true} 
           label="Cargo" 
           placeholder="digite seu cargo" 
           value ={cargo}
           aoAlterado = {valor => setCargo(valor)}
         />
-        <CampoTexto  
+        <Campo  
           label="Imagem" 
           placeholder="digite o endereço da imagem"
           value ={imagem}
@@ -68,14 +68,15 @@ const Formulario = ({aoColaboradorCadastrado, times, cadastrarTime}) => {
         cadastrarTime({nome:nomeTime, cor: corTime})
       } }>
         <h2>Preencha os dados para criar um novo time</h2>
-        <CampoTexto 
+        <Campo 
           obrigatorio={true} 
           label="Nome" 
           placeholder="digite o nome do time" 
           value ={nomeTime}
           aoAlterado = {valor => setNomeTime(valor)}
         />
-        <CampoTexto 
+        <Campo 
+          type='color'
           obrigatorio={true} 
           label="Cor" 
           placeholder="digite a cor do time" 
