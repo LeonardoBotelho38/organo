@@ -4,17 +4,19 @@ import ListaSuspensa from '../ListaSuspensa';
 import Botao from '../Botao';
 import { useState } from 'react';
 
-const Formulario = (props) => {
+const Formulario = ({aoColaboradorCadastrado, times, cadastrarTime}) => {
 
 
   const [nome, setNome] = useState('')
   const [cargo, setCargo] = useState('')
   const [imagem, setImagem] = useState('')
   const [time, setTime] = useState('')
+  const [nomeTime, setNomeTime] = useState('')
+  const [corTime, setCorTime] = useState('')
 
   function aoSalval (evento){
     evento.preventDefault()
-    props.aoColaboradorCadastrado({
+    aoColaboradorCadastrado({
       nome,
       cargo,
       imagem,
@@ -54,11 +56,33 @@ const Formulario = (props) => {
         />
         <ListaSuspensa 
           label="Time" 
-          itens={props.times}
+          itens={times}
           value = {time}
           aoAlterado = {valor => setTime(valor)}
         />
         <Botao texto="Criar card"/>
+      </form>
+      
+      <form onSubmit={(evento)=>{
+        evento.preventDefault()
+        cadastrarTime({nome:nomeTime, cor: corTime})
+      } }>
+        <h2>Preencha os dados para criar um novo time</h2>
+        <CampoTexto 
+          obrigatorio={true} 
+          label="Nome" 
+          placeholder="digite o nome do time" 
+          value ={nomeTime}
+          aoAlterado = {valor => setNomeTime(valor)}
+        />
+        <CampoTexto 
+          obrigatorio={true} 
+          label="Cor" 
+          placeholder="digite a cor do time" 
+          value ={corTime}
+          aoAlterado = {valor => setCorTime(valor)}
+        />
+        <Botao texto="Criar um novo time"/>
       </form>
     </section>
   );
