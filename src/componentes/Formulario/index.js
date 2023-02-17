@@ -4,6 +4,7 @@ import ListaSuspensa from '../ListaSuspensa';
 import Botao from '../Botao';
 import { useState } from 'react';
 
+
 const Formulario = ({aoColaboradorCadastrado, times, cadastrarTime}) => {
 
 
@@ -20,7 +21,7 @@ const Formulario = ({aoColaboradorCadastrado, times, cadastrarTime}) => {
       nome,
       cargo,
       imagem,
-      time
+      time,
     })
     setNome('')
     setCargo('')
@@ -34,6 +35,7 @@ const Formulario = ({aoColaboradorCadastrado, times, cadastrarTime}) => {
     <section className='formulario'>
       <form onSubmit={aoSalval}>
         <h2>Preencha os dados para cadastro</h2>
+        
         <Campo 
           obrigatorio={true} 
           label="Nome" 

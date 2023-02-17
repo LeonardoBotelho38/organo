@@ -6,6 +6,7 @@ import Formulario from './componentes/Formulario';
 import Footer from './componentes/Footer';
 import Time from './componentes/Time';
 import { v4 as uuidv4 } from 'uuid';
+import {MdLibraryAdd} from 'react-icons/md'
 
 
 
@@ -55,9 +56,9 @@ function App() {
     }
   ])
 
-
-
   const [colaboradores, setColaboradores]= useState([])
+
+  const [aparece, setAparece]= useState(true)
 
   function deletarColaborador(nome){
     setColaboradores(colaboradores.filter(colaborador => colaborador.nome !== nome))
@@ -81,15 +82,20 @@ function App() {
   function cadastrarTime (novoTime){
     setTimes([...times, {...novoTime, id:uuidv4()}])
   }
+  function mudaVisibilidade(){
+    setAparece(!aparece)
+  }
 
   return (
     <div className="App">
       <Banner/>
-      <Formulario 
+      <MdLibraryAdd className='mudaVisibilidade' onClick={mudaVisibilidade}/>
+      {aparece ?<Formulario 
         cadastrarTime={cadastrarTime}
         times={times.map(time => time.nome)} 
         aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)}
-      />
+        
+      />:<div className='espaco'><h4>Clique no botão para acessar o formulário</h4></div>}
       
       {times.map(time => <Time 
         mudarCor = {mudaCorDoTime}

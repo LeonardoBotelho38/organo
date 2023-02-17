@@ -3,7 +3,7 @@ import './Time.css'
 import hexToRgba from 'hex-to-rgba';
 
 const Time = (props) =>{
-    const css = {backgroundColor:hexToRgba(props.cor, '0.6'), backgroundImage:'url(/imagens/fundo.png)'}
+    const css = {backgroundImage:'url(/imagens/fundo.png)',backgroundColor:hexToRgba(props.cor, '0.6')}
 
     return(
         (props.colaboradores.length > 0) &&
